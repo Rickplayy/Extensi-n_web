@@ -1,7 +1,6 @@
-
 /* 
     Edito miguel 15/10/24
- */
+*/
 
 // Palabras que queremos cubrir
 const palabrasOfensivas = ["put", "pendej", "culer", "puñeter", "ramer"];
