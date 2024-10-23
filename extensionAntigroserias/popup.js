@@ -1,6 +1,6 @@
-const message = document.querySelector('div');
-const boton = document.querySelector('cambiarMensaje')
+const mensaje = document.querySelector('div');
+const boton = document.querySelector('#cambiar');
 
 boton.addEventListener('click', () => {
-    message.textContent = "nuevo mensaje"
+    mensaje.textContent = "nuevo mensaje";
 });

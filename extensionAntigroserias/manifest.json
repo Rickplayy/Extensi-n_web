@@ -4,7 +4,7 @@
     "version": "1.0",
     "description": "Primera prueba de extension",
     "icons": {
-        "128" : "./gato2.png"
+        "128" : "gato2.png"
     },
     "action": {
         "default_popup": "popup.html"

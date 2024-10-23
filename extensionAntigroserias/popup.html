@@ -3,14 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>extension</title>
-    <link rel="stylesheet" href="style_popup.css">   
-    <script src="popup.js"></script> 
+    <link rel="stylesheet" href="style_popup.css"> 
 </head>
 <body>
-    <div>Hola desde mi extension</div>
+    <script src="popup.js"></script>
 
-    <button id="cambiarMensaje"> cambiar mensaje </button>
+    <header> Extension Anti-Groserias </header>
+
+    <div id="titulo-filtro">Filtros de palabras</div>
+    <!-- Toggle para activar el filtro -->
+    <div class="wrap-toggle" id="div-toggle-filtro">
+        <input type="checkbox" name="toggle" id="toggle" class="offscreen">
+        <label for="toggle" class="switch"></label>
+    </div>
+
+    <!-- div con opciones del filtro -->
+    <div id="opciones-filtro">
+        <div id="div-checkbox-altisonantes">
+            <input type="checkbox" name="altisonantes" id="altisonantes"> 
+            <label id="lbl-altisonantes"> Palabras Altisonantes </label>
+        </div>
+
+        <div id="div-checkbox-racistas">
+            <input type="checkbox" name="racistas" id="racistas"> 
+            <label id="lbl-racistas"> Comentarios Racistas </label>
+        </div>
+        <div id="div-checkbox-sexistas">
+            <input type="checkbox" name="sexistas" id="sexistas"> 
+            <label id="lbl-sexistas"> Comentarios Sexistas </label>
+        </div>
+    </div>
+
+    <div id="tipoFiltro">
+
+        <div id="lbl-tipoFiltro">
+            <label>Tipo de Filtro</label>
+        </div>
+
+        <div id="div-tiposFiltro">
+            <input type="button" value="Censurado (*)" id="btn-Censura" name="btn-Censura">
+            <input type="button" value="Eliminada" id="btn-Eliminada" name="btn-Eliminada">
+        </div>
+
+    </div>
+
+    <div id="div-tolerancia">
+        <input type="radio" name="tolerancia" id="rd-baja" value="baja">
+        <label>baja</label>
+
+        <input type="radio" name="tolerancia" id="rd-media" value="media">
+        <label>media</label>
+
+        <input type="radio" name="tolerancia" id="rd-alta" value="alta">
+        <label>alta</label>
+    </div>
+
+    <button id="cambiar"> cambiar mensaje </button>
+    
 
 </body>
 </html>
