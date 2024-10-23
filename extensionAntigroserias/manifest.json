@@ -1,0 +1,12 @@
+{
+    "manifest_version" : 3,
+    "name" : "Primera prueba extension",
+    "version": "1.0",
+    "description": "Primera prueba de extension",
+    "icons": {
+        "128" : "./gato2.png"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
