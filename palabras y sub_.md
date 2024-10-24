@@ -1,7 +1,9 @@
---------------------------------------------
+# PALABRAS ANTOSINASTES -------------------------------------------------- 
+
+-Numero de Palabras en esta categoria: 69
 
 Cabr
-[ón, a, ones, oncillo]
+[ón, ona, ones, oncillo]
 
 Pendej
 [a,os,ear,itos,as,etes,eo, ita, adas]
@@ -15,28 +17,11 @@ Coñ
 Chinga
 [das, r, da, ndo]
 
-Verg
-[a, as, otas, uita]
-
-Jot
-[os, itos, olona, erias]
-
-Ram
-[era, ero, eras, eros]
-
 Cul
 [eros, eras, ear, ero, era, culerito]
 
-Maric
-[ón, as, ona, ones, oncillo, onada, mariquita]
-
-HUEVOS
-
 Desgraciad
 [o, a, os, as]
-
-Nac
-[o, a, os, on, as]
 
 Mam
 [ona, oncillos, ones, onas]
@@ -47,23 +32,42 @@ Hijueput
 Malparid
 [os, a, as]
 
-Cagón
-[es, cito]
-
 Idiot
 [a, as, ita, ez]
-
-Puñet
-[ero, a, eros, eras]
 
 Pinch
 [es, e]
 
-
+Puñet
+[ero, a, eros, eras]
 
 Ojet
 [es, e]
 
+Perr
+[a, as]
+
+
+# PALABRAS DE INDOLE SEXUAL, HOMOFOBICAS --------------------------------
+
+-Numero de Palabras en esta categoria: 61
+
+Verg
+[a, as, otas, uita]
+
+Jot
+[os, itos, olona, erias]
+
+Ram
+[era, ero, eras, eros]
+
+Maric
+[ón, as, ona, ones, oncillo, onada, mariquita]
+
+HUEVOS
+
+Cagón
+[es, cito]
 
 Put
 [o, a, as, os, itos, otes, eros]
@@ -73,9 +77,6 @@ Zorr
 
 Cog
 [er, iendo]
-
-Perr
-[a, as]
 
 Tet
 [as, onas, itas]
@@ -103,3 +104,23 @@ Prostitut
 
 Cul
 [o, os, itos, otes]
+
+
+# PALABRAS DE INDOLE RACISTA / DISCRIMINATORIOS / CLASISTAS --------------------
+
+-Numero de Palabras en esta categoria: 23
+
+Nac
+[o, a, os, on, as]
+
+Chair
+[o, os, ito, ón]
+
+Poch
+[o, os, ita, ón]
+
+Frijoler
+[o, a, os, as, ón]
+
+Pueblerin
+[o, a, os, as, ón]
