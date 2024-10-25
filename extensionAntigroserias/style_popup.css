@@ -19,82 +19,31 @@ header{
 .titulos{
     margin-left: 28px;
 }
-
-/* Estilos para los checkbox y radio */
-
-:root {
-    --primary: #ffc107;
-    --secondary: #673ab7;
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-/*Esconder el checkbox*/
-.inputs {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-}
-.div-forms {
-    display: flex;
-    align-items: center;
-}
-
-/*Estilo de los label*/
-.labels {
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-    padding: 1rem 1rem 1rem 2rem;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 1.5rem;
-        height: 1.5rem;
-        background: transparent;
-        border: 2px solid;
-        border-radius: 0.25rem;
-        z-index: -1;
-        transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
-        input[type="radio"] + & {
-            border-radius: 2rem;
-        }
-    }
-}
-
-/*Estado seleccionados*/
-input:checked + label {
-    padding-left: 1em;
-    color: var(--secondary);
-    &::before {
-        width: 100%;
-        height: 100%;
-        background: var(--primary);
-        border: 0;
-        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-    }
+.titles{
+  font-weight: 600;
 }
 
 /* Elementos centrados  */
+.label-filtro{
+  position: relative;
+  left: 15px;
+  cursor: pointer;
+}
+
 #titulo-filtro{
     position: relative;
     top: 15px;
 }
 #div-toggle-filtro{
+
     position: relative;
-    top: -12px; 
-    left: 183px; 
+    top: -15px; 
+    left: 169px; 
 }
 
-/* #opciones-filtro{
-    position: relative;
-    top: -2px;
-    right: -20px;
-} */
+ #div-checkbox-racistas{
+    padding: 10px 0 10px 0 ;
+} 
 
 #tipoFiltro{
     position: relative;
@@ -114,44 +63,117 @@ input:checked + label {
     position: relative;
     top: 43px;
 }
-#rd-tolerancia{
+/* #rd-tolerancia{
     position: relative;
     top: 8px;
+} */
+
+/*Estilos para checkbox*/
+.checkbox-wrapper-22 .switch2 {
+  display: inline-block;
+  height: 25px;
+  position: relative;
+  width: 60px;
+  top: 3px;
+  left: 30px;
 }
 
-/* Estilos para crear toggle animado */
-.switch{
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-    background-color: red;
-    border-radius: 15px;
-    cursor: pointer;
-}
-.switch::after{
-    content: '';
-    position:absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 30px;
-    background-color: white;
-    left: 5px;
-    top: 5px;
-    transition: all 0.4s;
+.checkbox-wrapper-22 .switch2 input {
+  display:none;
+  
 }
 
-input[type='checkbox']:checked + .switch::after{
-    transform: translateX(20px);
-    background-color: white;
+.checkbox-wrapper-22 .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
 }
 
-input[type='checkbox']:checked + .switch{
-    background-color: greenyellow;
+.checkbox-wrapper-22 .slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 18px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 18px;
 }
 
-.offscreen{
-    position: absolute;
-    left: -99999999px;
+.checkbox-wrapper-22 input:checked + .slider {
+  background-color: #66bb6a;
 }
-/* Aqui termina el toggle */
+
+.checkbox-wrapper-22 input:checked + .slider:before {
+  transform: translateX(32px);
+}
+
+.checkbox-wrapper-22 .slider.round {
+  border-radius: 34px;
+}
+
+.checkbox-wrapper-22 .slider.round:before {
+  border-radius: 50%;
+}
+
+/* Estilos para los radio */
+.wrap {
+  position: absolute;
+  top: 190%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.inputs {
+  display: none;
+}
+
+.labels {
+  cursor: pointer;
+  margin: 12px 12px;
+}
+
+.labels:before {
+  content: '';
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background: #ccc;
+  border-radius: 50%;
+  z-index: 2;
+  margin-bottom: -6px;
+  transition: box-shadow .4s ease,
+  background .3s ease;
+}
+
+.inputs:checked + .labels:before {
+  box-shadow: inset 0px 3px 0 2px #66bb6a;
+  background: #49854c;
+}
+
+/* Estilos Botones */
+
+.botones {
+  color: #252525;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #252525;
+  background: #66bb6a;
+  box-shadow: 3px 3px #252525;
+  cursor: pointer;
+  margin: 5px 10px;
+}
+
+.botones:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+

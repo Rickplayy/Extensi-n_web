@@ -16,61 +16,89 @@
 
         <div id="main-div">
 
-            <div id="titulo-filtro">Filtros de palabras</div>
+            <div id="titulo-filtro" class="titles" for="activador">Filtros de palabras</div>
             <!-- Toggle para activar el filtro -->
-            <div class="wrap-toggle" id="div-toggle-filtro">
-                <input type="checkbox" name="toggle" id="toggle" class="offscreen">
-                <label for="toggle" class="switch"></label>
+            <div class="checkbox-wrapper-22" id="div-toggle-filtro">
+                <label for="activador" class="switch2">
+                    <input type="checkbox" name="activador" id="activador"/>
+                    <div class="slider round"></div>
+                </label>
             </div>
 
             <!-- div con opciones del filtro -->
             <div id="opciones-filtro" >
                 
-                <div id="div-checkbox-altisonantes" class="grupo-input">
-                    <input type="checkbox" class="inputs" name="altisonantes" id="altisonantes"> 
-                    <label id="lbl-altisonantes" class="labels" for="altisonantes"> Palabras Altisonantes </label>
+                <div id="div-checkbox-altisonantes" class="checkbox-wrapper-22">
+
+                    <label for="altisonantes" class="label-filtro">Palabras Altisonantes </label>
+
+                    <label id="lbl-altisonantes" class="switch2" for="altisonantes" >
+
+                        <input type="checkbox" name="altisonantes" id="altisonantes"> 
+                        <div class="slider round"></div>
+
+                    </label>
+                    
                 </div>
 
-                <div id="div-checkbox-racistas" class="grupo-input">
-                    <input type="checkbox" class="inputs" name="racistas" id="racistas"> 
-                    <label id="lbl-racistas" class="labels" for="racistas"> Comentarios Racistas </label>
+                <div id="div-checkbox-racistas" class="checkbox-wrapper-22"> 
+
+                    <label for="racistas" class="label-filtro">Comentarios Racistas</label>
+
+                    <label id="lbl-racistas" class="switch2" for="racistas" > 
+
+                        <input type="checkbox" name="racistas" id="racistas">
+                        <div class="slider round"></div>
+
+                    </label>
+                    
                 </div>
 
-                <div id="div-checkbox-sexistas" class="grupo-input">
-                    <input type="checkbox" class="inputs" name="sexistas" id="sexistas"> 
-                    <label id="lbl-sexistas" class="labels" for="sexistas"> Comentarios Sexistas </label>
+                <div id="div-checkbox-sexistas" class="checkbox-wrapper-22">
+
+                    <label for="sexistas" class="label-filtro">Comentarios Sexistas</label>
+
+                   <label id="lbl-sexistas" class="switch2" for="sexistas" >
+
+                        <input type="checkbox" name="sexistas" id="sexistas"> 
+                        <div class="slider round"></div>
+
+                    </label>
+                    
                 </div>
 
             </div>
 
             <div id="tipoFiltro">
 
-                <div id="lbl-tipoFiltro">
+                <div id="lbl-tipoFiltro" class="titles">
                     <label>Tipos de Filtro</label>
                 </div>
 
                 <div id="div-tiposFiltro">
-                    <input type="button" value="Censurado (*)" id="btn-Censura" name="btn-Censura" class="botones-filtro">
-                    <input type="button" value="Eliminada" id="btn-Eliminada" name="btn-Eliminada" class="botones-filtro">
+                    <input type="button" value="Censurado (*)" id="btn-Censura" name="btn-Censura" class="botones">
+                    <input type="button" value="Eliminada" id="btn-Eliminada" name="btn-Eliminada" class="botones">
                 </div>
 
             </div>
 
             <!-- Div de tolerancia -->
             <div id="div-tolerancia">
-                <div id="lbl-tolerancia">
+                <div id="lbl-tolerancia" class="titles">
                     <label>Tolerancia</label>
                 </div>
 
-                <div id="rd-tolerancia" class="div-forms">
-                    <input type="radio" name="tolerancia" id="rd-baja" value="baja" class="inputs">
+                <div id="rd-tolerancia" class="wrap">
+                   
+                    <input type="radio" name="tolerancia" id="rd-baja" value="baja" class="inputs" checked>
                     <label class="labels" for="rd-baja">baja</label>
-
+                    
                     <input type="radio" name="tolerancia" id="rd-media" value="media" class="inputs">
                     <label class="labels" for="rd-media">media</label>
 
                     <input type="radio" name="tolerancia" id="rd-alta" value="alta" class="inputs">
                     <label class="labels" for="rd-alta">alta</label>
+
                 </div>
             </div>
         </div>
