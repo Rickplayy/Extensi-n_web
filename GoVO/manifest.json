@@ -1,8 +1,8 @@
 {
     "manifest_version" : 3,
-    "name" : "Primera prueba extension",
+    "name" : "GoVO",
     "version": "1.0",
-    "description": "Primera prueba de extension",
+    "description": "Good Vibes Only",
     "icons": {
         "128" : "gato2.png"
     },

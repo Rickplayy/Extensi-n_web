@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_popup.css"> 
 </head>
     <body>
-        <script src="popup.js"></script>
 
         <header>
             <div class="titulos">
@@ -15,8 +14,9 @@
         </header>
 
         <div id="main-div">
-
+            <!-- activador de la extension  -->
             <div id="titulo-filtro" class="titles" for="activador">Filtros de palabras</div>
+
             <!-- Toggle para activar el filtro -->
             <div class="checkbox-wrapper-22" id="div-toggle-filtro">
                 <label for="activador" class="switch2">
@@ -25,9 +25,11 @@
                 </label>
             </div>
 
-            <!-- div con opciones del filtro -->
+            <!-- Opciones del filtro -->
             <div id="opciones-filtro" >
                 
+                <!-- Palabras Altisonantes -->
+
                 <div id="div-checkbox-altisonantes" class="checkbox-wrapper-22">
 
                     <label for="altisonantes" class="label-filtro">Palabras Altisonantes </label>
@@ -41,6 +43,8 @@
                     
                 </div>
 
+                <!-- Palabras Racistas -->
+
                 <div id="div-checkbox-racistas" class="checkbox-wrapper-22"> 
 
                     <label for="racistas" class="label-filtro">Comentarios Racistas</label>
@@ -53,6 +57,8 @@
                     </label>
                     
                 </div>
+
+                <!-- Palabras sexistas -->
 
                 <div id="div-checkbox-sexistas" class="checkbox-wrapper-22">
 
@@ -69,6 +75,8 @@
 
             </div>
 
+            <!-- Tipos de filtro -->
+
             <div id="tipoFiltro">
 
                 <div id="lbl-tipoFiltro" class="titles">
@@ -82,11 +90,13 @@
 
             </div>
 
-            <!-- Div de tolerancia -->
+            <!-- Tolerancia -->
             <div id="div-tolerancia">
                 <div id="lbl-tolerancia" class="titles">
                     <label>Tolerancia</label>
                 </div>
+
+                <!-- Opciones de tolerancia -->
 
                 <div id="rd-tolerancia" class="wrap">
                    
@@ -103,4 +113,5 @@
             </div>
         </div>
     </body>
+    <script src="popup.js"></script>
 </html>
