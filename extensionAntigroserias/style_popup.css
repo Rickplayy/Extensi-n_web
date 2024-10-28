@@ -1,0 +1,184 @@
+/* Estilos generales */
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('Roboto-Light.ttf') format('truetype');
+}
+
+body{
+  background-color: #fefeff;
+  color: #333333;
+  font-size: 22px;
+  font-family: 'Roboto-Light';
+  width: 323px;
+  height: 440px;
+}
+header{
+  height: 45px;
+  font-weight: 600;
+  display: flex; 
+  align-items: center;
+  background-color: #1A1A2E;
+  width: 100%;
+  text-align: center;
+  color: whitesmoke;
+}
+.titulos{
+  margin-left: 28px;
+  position: relative;
+  left: 53px;
+}
+.titles{
+  font-weight: 800;
+}
+.colorTitulos{
+  color: #DB9D47;
+}
+
+
+/* Elementos centrados  */
+.label-filtro{
+  position: relative;
+  left: 15px;
+  cursor: pointer;
+}
+
+#titulo-filtro{
+  position: relative;
+  top: 15px;
+}
+#div-toggle-filtro{
+  position: relative;
+  top: -15px; 
+  left: 169px; 
+}
+
+ #div-checkbox-racistas{
+    padding: 10px 0 10px 0 ;
+} 
+
+#tipoFiltro{
+  position: relative;
+  top: 24px;
+}
+#div-tiposFiltro{
+  position: relative;
+  top: 10px;
+}
+
+#div-tolerancia{
+  position: relative;
+  top: 70px;
+}
+
+
+/*Estilos para checkbox*/
+.checkbox-wrapper-22 .switch2 {
+  display: inline-block;
+  height: 25px;
+  position: relative;
+  width: 60px;
+  top: 3px;
+  left: 30px;
+}
+
+.checkbox-wrapper-22 .switch2 input {
+  display:none;
+  
+}
+
+.checkbox-wrapper-22 .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.checkbox-wrapper-22 .slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 18px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 18px;
+}
+
+.checkbox-wrapper-22 input:checked + .slider {
+  background-color: #DB9D47;
+}
+
+.checkbox-wrapper-22 input:checked + .slider:before {
+  transform: translateX(34px);
+}
+
+.checkbox-wrapper-22 .slider.round {
+  border-radius: 34px;
+}
+
+.checkbox-wrapper-22 .slider.round:before {
+  border-radius: 50%;
+}
+
+/* Estilos para los radio */
+.wrap {
+  position: absolute;
+  top: 190%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.inputs {
+  display: none;
+}
+
+.labels {
+  cursor: pointer;
+  margin: 12px 12px;
+}
+
+.labels:before {
+  content: '';
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background: #ccc;
+  border-radius: 50%;
+  z-index: 2;
+  margin-bottom: -6px;
+  transition: box-shadow .4s ease,
+  background .3s ease;
+}
+
+.inputs:checked + .labels:before {
+  box-shadow: inset 0px 3px 0 2px #976a2a;
+  background: #DB9D47;
+}
+
+/* Estilos Botones */
+
+.botones {
+  font-family: 'Roboto-Light';
+  font-weight: 1000;
+  color: whitesmoke;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #252525;
+  background: #4f759b;
+  box-shadow: 3px 3px #252525;
+  cursor: pointer;
+  margin: 5px 10px;
+}
+
+.botones:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+
