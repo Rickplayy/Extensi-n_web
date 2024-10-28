@@ -1,28 +1,39 @@
 /* Estilos generales */
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('Roboto-Light.ttf') format('truetype');
+}
+
 body{
-    background-color: #fefeff;
-    color: #333333;
-    font-size: 22px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 323px;
-    height: 440px;
+  background-color: #fefeff;
+  color: #333333;
+  font-size: 22px;
+  font-family: 'Roboto-Light';
+  width: 323px;
+  height: 440px;
 }
 header{
-    height: 45px;
-    font-weight: 600;
-    display: flex; 
-    align-items: center;
-    background-color: #1A1A2E;
-    width: 100%;
-    text-align: center;
-    color: whitesmoke;
+  height: 45px;
+  font-weight: 600;
+  display: flex; 
+  align-items: center;
+  background-color: #1A1A2E;
+  width: 100%;
+  text-align: center;
+  color: whitesmoke;
 }
 .titulos{
-    margin-left: 28px;
+  margin-left: 28px;
+  position: relative;
+  left: 53px;
 }
 .titles{
-  font-weight: 600;
+  font-weight: 800;
 }
+.colorTitulos{
+  color: #DB9D47;
+}
+
 
 /* Elementos centrados  */
 .label-filtro{
@@ -32,14 +43,13 @@ header{
 }
 
 #titulo-filtro{
-    position: relative;
-    top: 15px;
+  position: relative;
+  top: 15px;
 }
 #div-toggle-filtro{
-
-    position: relative;
-    top: -15px; 
-    left: 169px; 
+  position: relative;
+  top: -15px; 
+  left: 169px; 
 }
 
  #div-checkbox-racistas{
@@ -47,23 +57,19 @@ header{
 } 
 
 #tipoFiltro{
-    position: relative;
-    top: 15px;
+  position: relative;
+  top: 24px;
 }
 #div-tiposFiltro{
-    position: relative;
-    top: 10px;
+  position: relative;
+  top: 10px;
 }
-
 
 #div-tolerancia{
-    position: relative;
-    top: 43px;
+  position: relative;
+  top: 70px;
 }
-/* #rd-tolerancia{
-    position: relative;
-    top: 8px;
-} */
+
 
 /*Estilos para checkbox*/
 .checkbox-wrapper-22 .switch2 {
@@ -103,11 +109,11 @@ header{
 }
 
 .checkbox-wrapper-22 input:checked + .slider {
-  background-color: #66bb6a;
+  background-color: #DB9D47;
 }
 
 .checkbox-wrapper-22 input:checked + .slider:before {
-  transform: translateX(32px);
+  transform: translateX(34px);
 }
 
 .checkbox-wrapper-22 .slider.round {
@@ -150,13 +156,15 @@ header{
 }
 
 .inputs:checked + .labels:before {
-  box-shadow: inset 0px 3px 0 2px #31572c;
-  background: #66bb6a;
+  box-shadow: inset 0px 3px 0 2px #976a2a;
+  background: #DB9D47;
 }
 
 /* Estilos Botones */
 
 .botones {
+  font-family: 'Roboto-Light';
+  font-weight: 1000;
   color: whitesmoke;
   text-transform: uppercase;
   padding: 10px 20px;
