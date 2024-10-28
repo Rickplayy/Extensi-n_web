@@ -1,7 +1,7 @@
 /* Estilos generales */
 body{
     background-color: #fefeff;
-    color: #000000;
+    color: #333333;
     font-size: 22px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 323px;
@@ -12,9 +12,10 @@ header{
     font-weight: 600;
     display: flex; 
     align-items: center;
-    background-color: #db2763;
+    background-color: #1A1A2E;
     width: 100%;
     text-align: center;
+    color: whitesmoke;
 }
 .titulos{
     margin-left: 28px;
@@ -53,11 +54,7 @@ header{
     position: relative;
     top: 10px;
 }
-.botones-filtro{
-    width: 100%;
-    background-color: gray;
-    border-radius: 28px;
-}
+
 
 #div-tolerancia{
     position: relative;
@@ -153,19 +150,19 @@ header{
 }
 
 .inputs:checked + .labels:before {
-  box-shadow: inset 0px 3px 0 2px #66bb6a;
-  background: #49854c;
+  box-shadow: inset 0px 3px 0 2px #31572c;
+  background: #66bb6a;
 }
 
 /* Estilos Botones */
 
 .botones {
-  color: #252525;
+  color: whitesmoke;
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 10px;
   border: 2px solid #252525;
-  background: #66bb6a;
+  background: #4f759b;
   box-shadow: 3px 3px #252525;
   cursor: pointer;
   margin: 5px 10px;
