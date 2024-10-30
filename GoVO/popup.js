@@ -9,6 +9,13 @@ activador.addEventListener('change', () =>{
     });
 });
 
+
+//Metodo para recargar la pagina con la api de la extension 
+/* chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.reload(tabs[0].id);
+  }); */
+  
+
 //Listener del botonCensura
 botonCensura.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -17,8 +24,9 @@ botonCensura.addEventListener("click", () => {
             func: censurarTextoEnPagina
             // Llama a la función en la página actual
         });
-    });
+    });    
 });
+
 //Listener del botonEliminar
 botonEliminar.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -33,8 +41,8 @@ botonEliminar.addEventListener("click", () => {
 // Esta función se ejecutará en el contexto de la página web
 function censurarTextoEnPagina() {
     //variables provisonales en lo que se extraen las palabras del .md
-    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud"];
-    const sufijos = "(o|a|os|as|itos|ito|itas)?"; // Palabras a censurar
+    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
+    const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const reemplazo = "***";
   
     function censurarNodo(node) {
@@ -54,9 +62,9 @@ function censurarTextoEnPagina() {
 
 function borrarTextoEnPagina() {
     //variables provisonales en lo que se extraen las palabras del .md
-    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud"];
-    const sufijos = "(o|a|os|as|itos|ito|itas)?"; // Palabras a censurar
-    const borrado = " ";
+    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
+    const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+    const borrado = "";
   
     function borrarNodo(node) {
         if (node.nodeType === Node.TEXT_NODE) {
