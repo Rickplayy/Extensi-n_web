@@ -1,4 +1,4 @@
-# PALABRAS ANTOSINASTES -------------------------------------------------- 
+# PALABRAS ALTOSINASTES -------------------------------------------------- 
 
 -Numero de Palabras en esta categoria: 
 
