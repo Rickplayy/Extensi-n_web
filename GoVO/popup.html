@@ -15,7 +15,7 @@
 
         <div id="main-div">
             <!-- activador de la extension  -->
-            <div id="titulo-filtro" class="titles" for="activador">Filtros de palabras</div>
+            <div id="titulo-filtro" class="titles" for="activador">Activar filtro</div>
 
             <!-- Toggle para activar el filtro -->
             <div class="checkbox-wrapper-22" id="div-toggle-filtro">
@@ -24,94 +24,22 @@
                     <div class="slider round"></div>
                 </label>
             </div>
-
-            <!-- Opciones del filtro -->
-            <div id="opciones-filtro" >
-                
-                <!-- Palabras Altisonantes -->
-
-                <div id="div-checkbox-altisonantes" class="checkbox-wrapper-22">
-
-                    <label for="altisonantes" class="label-filtro">Palabras Altisonantes </label>
-
-                    <label id="lbl-altisonantes" class="switch2" for="altisonantes" >
-
-                        <input type="checkbox" name="altisonantes" id="altisonantes" disabled> 
-                        <div class="slider round"></div>
-
-                    </label>
-                    
-                </div>
-
-                <!-- Palabras Racistas -->
-
-                <div id="div-checkbox-racistas" class="checkbox-wrapper-22"> 
-
-                    <label for="racistas" class="label-filtro">Comentarios Racistas</label>
-
-                    <label id="lbl-racistas" class="switch2" for="racistas" > 
-
-                        <input type="checkbox" name="racistas" id="racistas" disabled>
-                        <div class="slider round"></div>
-
-                    </label>
-                    
-                </div>
-
-                <!-- Palabras sexistas -->
-
-                <div id="div-checkbox-sexistas" class="checkbox-wrapper-22">
-
-                    <label for="sexistas" class="label-filtro">Comentarios Sexistas</label>
-
-                   <label id="lbl-sexistas" class="switch2" for="sexistas" >
-
-                        <input type="checkbox" name="sexistas" id="sexistas" disabled> 
-                        <div class="slider round"></div>
-
-                    </label>
-                    
-                </div>
-
-            </div>
-
             <!-- Tipos de filtro -->
 
             <div id="tipoFiltro">
 
                 <div id="lbl-tipoFiltro" class="titles">
-                    <label>Tipos de Filtro</label>
+                    <label>-Tipos de Filtro</label>
                 </div>
 
                 <div id="div-tiposFiltro">
-                    <input type="button" value="Censurado (*)" id="btn-Censura" name="btn-Censura" class="botones" disabled>
-                    <input type="button" value="Eliminada" id="btn-Eliminada" name="btn-Eliminada" class="botones" disabled>
+                    <input type="button" value="Censurado (*)" id="botonCensura" name="btn-Censura" class="botones" disabled>
+                    <input type="button" value="Eliminada" id="botonEliminar" name="btn-Eliminada" class="botones" disabled>
                 </div>
 
             </div>
 
-            <!-- Tolerancia -->
-            <div id="div-tolerancia">
-                <div id="lbl-tolerancia" class="titles">
-                    <label>Tolerancia</label>
-                </div>
 
-                <!-- Opciones de tolerancia -->
-
-                <div id="rd-tolerancia" class="wrap">
-                   
-                    <input type="radio" name="tolerancia" id="rd-baja" value="baja" class="inputs" checked disabled>
-                    <label class="labels" for="rd-baja">Baja</label>
-                    
-                    <input type="radio" name="tolerancia" id="rd-media" value="media" class="inputs" disabled>
-                    <label class="labels" for="rd-media">Media</label>
-
-                    <input type="radio" name="tolerancia" id="rd-alta" value="alta" class="inputs" disabled>
-                    <label class="labels" for="rd-alta">Alta</label>
-
-                </div>
-            </div>
-        </div>
     </body>
     <script src="popup.js"></script>
 </html>

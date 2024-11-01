@@ -8,7 +8,7 @@ body{
   background-color: #fefeff;
   color: #333333;
   font-size: 22px;
-  font-family: 'Roboto-Light';
+  font-family: 'Roboto';
   width: 323px;
   height: 440px;
 }
@@ -51,10 +51,6 @@ header{
   top: -15px; 
   left: 169px; 
 }
-
- #div-checkbox-racistas{
-    padding: 10px 0 10px 0 ;
-} 
 
 #tipoFiltro{
   position: relative;
@@ -155,30 +151,27 @@ header{
   background .3s ease;
 }
 
-.inputs:checked + .labels:before {
-  box-shadow: inset 0px 3px 0 2px #976a2a;
-  background: #DB9D47;
-}
 
 /* Estilos Botones */
 
 .botones {
-  font-family: 'Roboto-Light';
-  font-weight: 1000;
-  color: whitesmoke;
-  text-transform: uppercase;
   padding: 10px 20px;
-  border-radius: 10px;
-  border: 2px solid #252525;
-  background: #4f759b;
-  box-shadow: 3px 3px #252525;
+  background-color: #4f759b;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  margin: 5px 10px;
+}
+
+.botones:hover {
+  background-color: #4f759b;
 }
 
 .botones:active {
-  box-shadow: none;
-  transform: translate(3px, 3px);
+  background-color: #4f759b;
 }
+
+
+
 
 
