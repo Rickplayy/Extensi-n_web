@@ -10,7 +10,7 @@ body{
   font-size: 22px;
   font-family: 'Roboto-Light';
   width: 323px;
-  height: 440px;
+  height: 365px;
 }
 header{
   height: 45px;
@@ -21,6 +21,7 @@ header{
   width: 100%;
   text-align: center;
   color: whitesmoke;
+  
 }
 .titulos{
   margin-left: 28px;
@@ -32,6 +33,12 @@ header{
 }
 .colorTitulos{
   color: #DB9D47;
+}
+.copy{
+  font-size: 10px;
+  position: relative;
+  top: 48px;
+  left: -2px;
 }
 
 
@@ -64,12 +71,6 @@ header{
   position: relative;
   top: 10px;
 }
-
-#div-tolerancia{
-  position: relative;
-  top: 70px;
-}
-
 
 /*Estilos para checkbox*/
 .checkbox-wrapper-22 .switch2 {
@@ -124,42 +125,6 @@ header{
   border-radius: 50%;
 }
 
-/* Estilos para los radio */
-.wrap {
-  position: absolute;
-  top: 190%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
-
-.inputs {
-  display: none;
-}
-
-.labels {
-  cursor: pointer;
-  margin: 12px 12px;
-}
-
-.labels:before {
-  content: '';
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-  background: #ccc;
-  border-radius: 50%;
-  z-index: 2;
-  margin-bottom: -6px;
-  transition: box-shadow .4s ease,
-  background .3s ease;
-}
-
-.inputs:checked + .labels:before {
-  box-shadow: inset 0px 3px 0 2px #976a2a;
-  background: #DB9D47;
-}
-
 /* Estilos Botones */
 
 .botones {
@@ -167,7 +132,7 @@ header{
   font-weight: 1000;
   color: whitesmoke;
   text-transform: uppercase;
-  padding: 10px 20px;
+  padding: 15px 25px;
   border-radius: 10px;
   border: 2px solid #252525;
   background: #4f759b;
@@ -180,5 +145,4 @@ header{
   box-shadow: none;
   transform: translate(3px, 3px);
 }
-
 
