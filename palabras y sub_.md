@@ -178,5 +178,5 @@ const regexIndoleR_D_C = /\b(
     chair(o|os|ito|ón) |
     poch(o|os|ita|ón) |
     frijol(e|a|os|as|ón) |
-    puebler(o|a|os|as|ón)
+    pueblerin(o|a|os|as|ón)
 )\b/gi;
