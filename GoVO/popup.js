@@ -6,6 +6,55 @@ const ch_altisonantes = document.querySelector('#altisonantes');
 const ch_racistas = document.querySelector('#racistas');
 const ch_sexistas = document.querySelector('#sexistas');
 
+
+let status_filtro;
+
+ch_altisonantes.addEventListener('change', () => {
+    if (ch_altisonantes.checked) {
+        status_filtro = 1;
+        console.log("se selecciono altisonantes"+ status_filtro);
+    } else {
+        console.log("No se selecciono altisonantes");
+    }
+});
+
+ch_racistas.addEventListener('change', () => {
+    if (ch_racistas.checked) {
+        status_filtro = 2;
+        console.log("se selecciono racistas"+ status_filtro);
+    } else {
+        console.log("No se selecciono racistas");
+    }
+});
+
+ch_sexistas.addEventListener('change', () => {
+    if (ch_sexistas.checked) {
+        status_filtro = 3;
+        console.log("se selecciono sexistas"+ status_filtro);
+    } else {
+        console.log("No se selecciono sexistas");
+    }
+});
+
+switch (status_filtro) {
+    case 1:
+        arr_Alti = "\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b";
+        arr_PalabrasA = ["cabr", "pendej", "mierd", "coñ", "chinga","cul", "pedesgraciadlotud", "mam", "hijueput", "malparid", "idiot", "pinch", "puñet", "ojet", "perr", "mamahuevo"];
+        break;
+
+    case 2:
+
+        break;
+
+    case 3:
+
+        break;
+
+    default:
+
+        break;
+}
+
 const options = document.querySelectorAll('#btn-Censura, #btn-Eliminada'); 
 
 activador.addEventListener('change', () =>{
@@ -23,19 +72,13 @@ activador.addEventListener('change', () =>{
 
 //Listener del botonCensura
 botonCensura.addEventListener("click", () => {
-    if (ch_altisonantes.checked == true) {
-        console.log("aca entra ighual");
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.scripting.executeScript({
-                target: { tabId: tabs[0].id },
-                func: censurarTextoEnPagina
-                // Llama a la función en la página actual
-            });
-        });
-    }else if (ch_racistas.checked == true) {
-        console.log("Aqui si entra");
-
-    }    
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: censurarTextoEnPagina
+            // Llama a la función en la página actual
+        }).then(() => console.log("Texto censurado"));
+    });    
 });
 
 //Listener del botonEliminar
@@ -45,7 +88,7 @@ botonEliminar.addEventListener("click", () => {
             target: { tabId: tabs[0].id },
             func: borrarTextoEnPagina
             // Llama a la función en la página actual
-        });
+        }).then(() => console.log("Texto eliminado"));
     });
 });
   
