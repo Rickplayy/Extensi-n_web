@@ -6,60 +6,69 @@ const ch_altisonantes = document.querySelector('#altisonantes');
 const ch_racistas = document.querySelector('#racistas');
 const ch_sexistas = document.querySelector('#sexistas');
 
-
-let status_filtro;
+var status_filtro = null;
 
 ch_altisonantes.addEventListener('change', () => {
     if (ch_altisonantes.checked) {
-        status_filtro = 1;
+        status_filtro = 0;
         console.log("se selecciono altisonantes"+ status_filtro);
     } else {
         console.log("No se selecciono altisonantes");
     }
+    evaluarStatus(status_filtro);
 });
 
 ch_racistas.addEventListener('change', () => {
     if (ch_racistas.checked) {
-        status_filtro = 2;
+        status_filtro = 1;
         console.log("se selecciono racistas"+ status_filtro);
     } else {
         console.log("No se selecciono racistas");
     }
+    evaluarStatus(status_filtro);
 });
 
 ch_sexistas.addEventListener('change', () => {
     if (ch_sexistas.checked) {
-        status_filtro = 3;
+        status_filtro = 2;
         console.log("se selecciono sexistas"+ status_filtro);
     } else {
         console.log("No se selecciono sexistas");
     }
+    evaluarStatus(status_filtro);
 });
 
-switch (status_filtro) {
-    case 1:
-        arr_Alti = "\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b";
-        arr_PalabrasA = ["cabr", "pendej", "mierd", "coñ", "chinga","cul", "pedesgraciadlotud", "mam", "hijueput", "malparid", "idiot", "pinch", "puñet", "ojet", "perr", "mamahuevo"];
-        break;
-
-    case 2:
-
-        break;
-
-    case 3:
-
-        break;
-
-    default:
-
-        break;
+function evaluarStatus(status_filtro) {
+    switch (status_filtro) {
+        case 0:
+            
+            console.log("entra caso 1");
+    
+            break;
+    
+        case 1:
+            console.log("entra caso 2");
+    
+            break;
+    
+        case 2:
+            console.log("entra caso 3");
+            
+            break;
+    
+        default:
+            console.log("entra default");
+            return; 
+    }    
 }
+
 
 const options = document.querySelectorAll('#btn-Censura, #btn-Eliminada'); 
 
 activador.addEventListener('change', () =>{
+    console.log("Se activa la extension")
     options.forEach(opcion =>{
-        opcion.disabled = !activador.checked;
+        opcion.disabled =! activador.checked;
     });
 });
 
@@ -94,7 +103,7 @@ botonEliminar.addEventListener("click", () => {
   
 // Esta función se ejecutará en el contexto de la página web
 function censurarTextoEnPagina() {
-    const palabrasProhibidas = ["cabr", "pendej", "mierd", "coñ", "chinga","cul", "pedesgraciadlotud", "mam", "hijueput", "malparid", "idiot", "pinch", "puñet", "ojet", "perr", "mamahuevo"];
+    const palabrasProhibidas = ["cabr", "pendej", "mierd", "coñ", "chinga","cul", "desgraciad", "mam", "hijueput", "malparid", "idiot", "pinch", "puñet", "ojet", "perr", "mamahuevo"];
     // const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const reemplazo = "***";
   
