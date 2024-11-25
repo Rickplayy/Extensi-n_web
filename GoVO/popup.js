@@ -41,24 +41,20 @@ ch_sexistas.addEventListener('change', () => {
 function evaluarStatus(status_filtro) {
     switch (status_filtro) {
         case 0:
-            
+
             console.log("entra caso 1");
     
-            break;
+        break;
     
         case 1:
             console.log("entra caso 2");
     
-            break;
+        break;
     
         case 2:
             console.log("entra caso 3");
             
-            break;
-    
-        default:
-            console.log("entra default");
-            return; 
+        break; 
     }    
 }
 
