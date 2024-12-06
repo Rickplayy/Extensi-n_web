@@ -1,14 +1,15 @@
+//variables de botones
 const botonCensura = document.querySelector('#btn-Censura');
 const botonEliminar = document.querySelector('#btn-Eliminada');
 const activador = document.querySelector('#activador');
-
+//Variables de checkbox
 const ch_altisonantes = document.querySelector('#altisonantes');
 const ch_racistas = document.querySelector('#racistas');
 const ch_sexistas = document.querySelector('#sexistas');
 
 var status_filtro = null;
 
-ch_altisonantes.addEventListener('change', () => {
+ch_altisonantes.addEventListener('click', function() {
     if (ch_altisonantes.checked) {
         status_filtro = 0;
         console.log("se selecciono altisonantes"+ status_filtro);
@@ -18,7 +19,7 @@ ch_altisonantes.addEventListener('change', () => {
     evaluarStatus(status_filtro);
 });
 
-ch_racistas.addEventListener('change', () => {
+ch_racistas.addEventListener('click', function() {
     if (ch_racistas.checked) {
         status_filtro = 1;
         console.log("se selecciono racistas"+ status_filtro);
@@ -28,7 +29,7 @@ ch_racistas.addEventListener('change', () => {
     evaluarStatus(status_filtro);
 });
 
-ch_sexistas.addEventListener('change', () => {
+ch_sexistas.addEventListener('click', function() {
     if (ch_sexistas.checked) {
         status_filtro = 2;
         console.log("se selecciono sexistas"+ status_filtro);
@@ -76,7 +77,7 @@ activador.addEventListener('change', () =>{
   
 
 //Listener del botonCensura
-botonCensura.addEventListener("click", () => {
+botonCensura.addEventListener("click", function() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
@@ -87,7 +88,7 @@ botonCensura.addEventListener("click", () => {
 });
 
 //Listener del botonEliminar
-botonEliminar.addEventListener("click", () => {
+botonEliminar.addEventListener("click", function() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
@@ -138,9 +139,3 @@ function borrarTextoEnPagina() {
     }
     borrarNodo(document.body);
 }
-
-  
-
-
-
-
