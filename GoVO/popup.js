@@ -44,30 +44,30 @@ function evaluarStatus(status_filtro) {
     case 0:
       console.log("entra caso 1");
 
-      break;
+    break;
 
     case 1:
       console.log("entra caso 2");
 
-      break;
+    break;
 
     case 2:
       console.log("entra caso 3");
 
-      break;
+    break;
   }
 }
 
 const options = document.querySelectorAll("#btn-Censura, #btn-Eliminada");
 
-activador.addEventListener("change", () => {
+activador.addEventListener("change", function() {
   console.log("Se activa la extension");
   options.forEach((opcion) => {
-    opcion.disabled = !activador.checked;
+    opcion.disabled =! activador.checked;
   });
 });
 
-//Metodo para recargar la pagina con la api de la extension
+//Metodo para recargar la pagina con la api de chrome
 /* chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.reload(tabs[0].id);
   }); */

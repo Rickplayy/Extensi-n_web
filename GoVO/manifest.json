@@ -3,6 +3,7 @@
     "name" : "GoVO",
     "version": "1.0",
     "description": "Good Vibes Only",
+    "host_permissions": ["<all_urls>"],
     "permissions": ["scripting", "activeTab", "tabs", "storage"],
     "icons": {
         "128" : "gato2.png"
