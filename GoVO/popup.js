@@ -47,8 +47,13 @@ jqactivador.change(function(){
     });
 });
 
-function restaurarPagina(){
-    document.body.innerHTML = originalContent;
+function recargarPagina() {
+    // Obtén la pestaña activa y recárgala
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs.length > 0) {
+            chrome.tabs.reload(tabs[0].id);
+        }
+    });
 }
 
 // Activacion al cargar la extension para salvar los checkboxes en su uso
@@ -69,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("checkboxStates", JSON.stringify(savedStates));
         });
     });
-    alert('Cambios salvados');
+    //alert('Cambios salvados');
 });
 
 //Metodo para recargar la pagina con la api de la extension 
@@ -81,8 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#activador").change(
     function(){
         if (!($(this).is(':checked'))) {
-            //alert('checked');
-            restaurarPagina();
+            recargarPagina();
         }
     });
 
@@ -115,9 +119,6 @@ function censurarTextoEnPagina() {
     const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const reemplazo = "***";
 
-    // Guarda el estado original de la página antes de hacer cambios
-    const originalContent = document.body.innerHTML;
-    //alert(originalContent);
   
     function censurarNodo(node) {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -140,9 +141,6 @@ function borrarTextoEnPagina() {
     const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const borrado = "";
 
-    // Guarda el estado original de la página antes de hacer cambios
-    const originalContent = document.body.innerHTML;
-    //alert("Borrar");
   
     function borrarNodo(node) {
         if (node.nodeType === Node.TEXT_NODE) {
