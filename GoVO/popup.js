@@ -9,12 +9,44 @@ activador.addEventListener('change', () =>{
     });
 });
 
+function restaurarPagina(){
+    document.body.innerHTML = originalContent;
+}
+
+// Activacion al cargar la extension para salvar los checkboxes en su uso
+document.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    // Restaurar los valores guardados
+    const savedStates = JSON.parse(localStorage.getItem("checkboxStates")) || {};
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = savedStates[checkbox.id] || false; // Restaurar el estado
+    });
+
+    // Guardar los valores al cambiar
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+            const savedStates = JSON.parse(localStorage.getItem("checkboxStates")) || {};
+            savedStates[checkbox.id] = checkbox.checked; // Actualizar el estado
+            localStorage.setItem("checkboxStates", JSON.stringify(savedStates));
+        });
+    });
+    alert('Cambios salvados');
+});
 
 //Metodo para recargar la pagina con la api de la extension 
 /* chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.reload(tabs[0].id);
   }); */
   
+
+  $("#activador").change(
+    function(){
+        if (!($(this).is(':checked'))) {
+            //alert('checked');
+            restaurarPagina();
+        }
+    });
 
 //Listener del botonCensura
 botonCensura.addEventListener("click", () => {
@@ -44,6 +76,10 @@ function censurarTextoEnPagina() {
     const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
     const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const reemplazo = "***";
+
+    // Guarda el estado original de la página antes de hacer cambios
+    const originalContent = document.body.innerHTML;
+    //alert(originalContent);
   
     function censurarNodo(node) {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -65,6 +101,10 @@ function borrarTextoEnPagina() {
     const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
     const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const borrado = "";
+
+    // Guarda el estado original de la página antes de hacer cambios
+    const originalContent = document.body.innerHTML;
+    //alert("Borrar");
   
     function borrarNodo(node) {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -80,9 +120,3 @@ function borrarTextoEnPagina() {
     }
     borrarNodo(document.body);
 }
-
-  
-
-
-
-
