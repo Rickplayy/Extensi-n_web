@@ -1,11 +1,49 @@
 const botonCensura = document.querySelector('#btn-Censura');
 const botonEliminar = document.querySelector('#btn-Eliminada');
 const activador = document.querySelector('#activador');
+const jqactivador = $("#activador");
 const options = document.querySelectorAll('#altisonantes, #racistas, #sexistas, #btn-Censura, #btn-Eliminada, #rd-baja, #rd-media, #rd-alta'); 
 
-activador.addEventListener('change', () =>{
+// Codigo anterior para desactivar checkboxes en change de activador (No desactiva los checkboxes de opciones al desmarcar activador)
+/*activador.addEventListener('change', () =>{
     options.forEach(opcion =>{
         opcion.disabled = !activador.checked;
+    });
+});
+*/
+
+// Funcion que se ejecuta en document.ready, habilita los cambios en options siempre y cuando activador este marcado.
+$(document).ready(function () {
+     // Función para habilitar o deshabilitar las opciones
+     const toggleOptions = () => {
+        options.forEach(opcion => {
+            opcion.disabled = !activador.checked;
+
+            // Desmarcar automáticamente si se deshabilita
+            if (!activador.checked) {
+                opcion.checked = false;
+            }
+        });
+    };
+
+    // Verificar el estado al cargar la extensión
+    toggleOptions();
+
+    // Escuchar cambios en el checkbox activador
+    jqactivador.change(function () {
+        toggleOptions();
+    });
+});
+
+// Nuevo metodo para activar o desactivar los checkboxes options en change de activador
+jqactivador.change(function(){
+    options.forEach(opcion =>{
+        opcion.disabled = !activador.checked;
+
+        // Desmarcar automáticamente si se deshabilita
+        if (!activador.checked) {
+            opcion.checked = false;
+        }
     });
 });
 
