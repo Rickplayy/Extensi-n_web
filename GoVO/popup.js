@@ -124,7 +124,7 @@ function recargarPagina() {
 
 //Listener del botonCensura
 botonCensura.addEventListener("click", () => {
-  console.log("Aplicando filtros de: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
+  console.log("Aplicando filtros de censura para: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
     // Llama a las funciones de censura en la página actual
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       // Llamar a funcion de censura de palabras altisonantes
@@ -153,7 +153,7 @@ botonCensura.addEventListener("click", () => {
 
 //Listener del botonEliminar
 botonEliminar.addEventListener("click", () => {
-  console.log("Aplicando filtros de: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
+  console.log("Aplicando filtros de borrado para: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
     // Llama a la función en la página actual
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       // Llamar a funcion de borrado de palabras altisonantes
