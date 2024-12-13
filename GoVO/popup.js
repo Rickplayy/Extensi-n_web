@@ -156,10 +156,18 @@ botonEliminar.addEventListener("click", () => {
   console.log("Aplicando filtros de: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
     // Llama a la función en la página actual
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      // Llamar a funcion de borrado de palabras altisonantes
       if (optionAltisonantes.checked) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
             func: borrarTextoEnPagina_Altisonante
+        });
+      }
+      // Llamar a funcion de borrado de palabras racistas
+      if (optionRacistas.checked) {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: borrarTextoEnPagina_Racista
         });
       }
     });
@@ -281,4 +289,26 @@ function borrarTextoEnPagina_Altisonante() {
         }
     }
     borrarNodo_Altisonante(document.body);
+}
+
+function borrarTextoEnPagina_Racista() {
+  //variables provisonales en lo que se extraen las palabras del .md
+  const palabrasProhibidas = [""];
+  //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+  const borrado = "";
+
+
+  function borrarNodo_Racista(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+          let texto2_Racista = node.nodeValue;
+          palabrasProhibidas.forEach((palabra2) => {
+              const regex = new RegExp("\\b(nac(o|a|os|on|as)|chair(o|os|ito|ón)|poch(o|os|ita|ón)|frijol(e|a|os|as|ón)|puebler(o|a|os|as|ón))\\b","gi");
+              texto2_Racista = texto2_Racista.replace(regex, borrado);
+          });
+          node.nodeValue = texto2_Racista;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+          node.childNodes.forEach(borrarNodo_Racista);
+      }
+  }
+  borrarNodo_Racista(document.body);
 }
