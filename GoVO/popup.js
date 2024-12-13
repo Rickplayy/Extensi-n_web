@@ -132,34 +132,42 @@ botonCensura.addEventListener("click", () => {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
             func: censurarTextoEnPagina_Altisonante
-            
         });
       }
-
+      // Llamar a funcion de censura de palabras racistas
       if (optionRacistas.checked) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
             func: censurarTextoEnPagina_Racista
-            
         });
       }
-
+      // Llamar a funcion de censura de palabras sexistas
+      if (optionSexistas.checked) {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: censurarTextoEnPagina_Sexista
+        });
+      }
     });    
 });
 
 //Listener del botonEliminar
 botonEliminar.addEventListener("click", () => {
+  console.log("Aplicando filtros de: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
+    // Llama a la función en la página actual
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (optionAltisonantes.checked) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
-            func: borrarTextoEnPagina
-            // Llama a la función en la página actual
+            func: borrarTextoEnPagina_Altisonante
         });
+      }
     });
 });
 
   
-// Esta función se ejecutará en el contexto de la página web
+// Estas funciónes se ejecutará en el contexto de la página web
+// FUNCIONES DE CENSURA
 function censurarTextoEnPagina_Altisonante() {
     //variables provisonales en lo que se extraen las palabras del .md
     const palabrasProhibidas = [""];
@@ -221,24 +229,56 @@ function censurarTextoEnPagina_Racista() {
   censurarNodo_Racista(document.body);
 }
 
-function borrarTextoEnPagina() {
+function censurarTextoEnPagina_Sexista() {
+  //variables provisonales en lo que se extraen las palabras del .md
+  const palabrasProhibidas = [""];
+  //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+
+  /*
+  const regex2 = new RegExp(
+      "\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b",
+      "gi"
+    );
+  */
+
+  const reemplazo = "***";
+
+  function censurarNodo_Sexista(node) {
+
+      if (node.nodeType === Node.TEXT_NODE) {
+          let textoSexista = node.nodeValue;
+          palabrasProhibidas.forEach((palabra) => {
+              //const regex = new RegExp("\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b","gi");
+              const regex = new RegExp("\\b(verg(a|as|otas|uita)|jot(os|itos|olona|erias)|ram(era|ero|eras|eros)|maric(ón|as|ona|ones|oncillo|onada|mariquita)|huevos|cagón(es|cito)|put(o|a|as|os|itos|otes|eros)|zorr(a|eros|as|os|o)|cog(er|iendo)|tet(as|onas|itas|otas)|chich(is|otas|ón)|mujerzuela(s)?|pito(s)?|pucha(s)?|panoch(a|ón|as)|golfa(s)?|prostitut(a|o|as|os)?|prostibulo|cul(o|os|itos|otes|ón))\\b","gi");
+              textoSexista = textoSexista.replace(regex, reemplazo);
+          });
+          node.nodeValue = textoSexista;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+          node.childNodes.forEach(censurarNodo_Sexista);
+      }
+  }
+  censurarNodo_Sexista(document.body);
+}
+
+// FUNCIONES DE BORRADO
+function borrarTextoEnPagina_Altisonante() {
     //variables provisonales en lo que se extraen las palabras del .md
-    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
-    const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+    const palabrasProhibidas = [""];
+    //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const borrado = "";
 
   
-    function borrarNodo(node) {
+    function borrarNodo_Altisonante(node) {
         if (node.nodeType === Node.TEXT_NODE) {
-            let texto2 = node.nodeValue;
+            let texto2_Altisonante = node.nodeValue;
             palabrasProhibidas.forEach((palabra2) => {
                 const regex = new RegExp("\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b","gi");
-                texto2 = texto2.replace(regex, borrado);
+                texto2_Altisonante = texto2_Altisonante.replace(regex, borrado);
             });
-            node.nodeValue = texto2;
+            node.nodeValue = texto2_Altisonante;
         } else if (node.nodeType === Node.ELEMENT_NODE) {
-            node.childNodes.forEach(borrarNodo);
+            node.childNodes.forEach(borrarNodo_Altisonante);
         }
     }
-    borrarNodo(document.body);
+    borrarNodo_Altisonante(document.body);
 }
