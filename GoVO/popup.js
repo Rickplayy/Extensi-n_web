@@ -3,8 +3,12 @@ const botonEliminar = document.querySelector('#btn-Eliminada');
 const activador = document.querySelector('#activador');
 const jqactivador = $("#activador");
 const options = document.querySelectorAll('#altisonantes, #racistas, #sexistas, #btn-Censura, #btn-Eliminada, #rd-baja, #rd-media, #rd-alta'); 
+const optionAltisonantes = document.getElementById("altisonantes");
+const optionRacistas = document.getElementById("racistas");
+const optionSexistas = document.getElementById("sexistas");
 
-// Codigo anterior para desactivar checkboxes en change de activador (No desactiva los checkboxes de opciones al desmarcar activador)
+
+// [DE LEGADO] Codigo anterior para desactivar checkboxes en change de activador (No desactiva los checkboxes de opciones al desmarcar activador)
 /*activador.addEventListener('change', () =>{
     options.forEach(opcion =>{
         opcion.disabled = !activador.checked;
@@ -12,8 +16,34 @@ const options = document.querySelectorAll('#altisonantes, #racistas, #sexistas, 
 });
 */
 
-// Funcion que se ejecuta en document.ready, habilita los cambios en options siempre y cuando activador este marcado.
-$(document).ready(function () {
+/* Funcion que se ejecuta en DOMContentLoad (Carga de pagina): 
+1-Habilita los cambios en options siempre y cuando activador este marcado.
+2-Activacion al cargar la extension para salvar los checkboxes en su uso
+3- Debug de checkboxes al cargar el DOM*/
+    document.addEventListener('DOMContentLoaded', function () {
+
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    // Restaurar los valores guardados
+    const savedStates = JSON.parse(localStorage.getItem("checkboxStates")) || {};
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = savedStates[checkbox.id] || false; // Restaurar el estado
+    });
+
+    // Guardar los valores al cambiar
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+            const savedStates = JSON.parse(localStorage.getItem("checkboxStates")) || {};
+            savedStates[checkbox.id] = checkbox.checked; // Actualizar el estado
+            localStorage.setItem("checkboxStates", JSON.stringify(savedStates));
+        });
+    });
+    //alert('Cambios salvados');
+
+    const optionAltisonantes = document.getElementById("altisonantes");
+    const optionRacistas = document.getElementById("racistas");
+    const optionSexistas = document.getElementById("sexistas");
+    const options = document.querySelectorAll('#altisonantes, #racistas, #sexistas, #btn-Censura, #btn-Eliminada, #rd-baja, #rd-media, #rd-alta');
      // Función para habilitar o deshabilitar las opciones
      const toggleOptions = () => {
         options.forEach(opcion => {
@@ -24,15 +54,36 @@ $(document).ready(function () {
                 opcion.checked = false;
             }
         });
+
     };
+
+    // DEBUG PARA SABER SI ESTA CARGANDO LA EXTENSION
+    console.log("Listo");
+
+    // DEBUG PARA ESTADO DE LOS CHECKBOXES AL CARGAR LA EXTENSION
+    console.log(optionAltisonantes.checked);
+    console.log(optionRacistas.checked);
+    console.log(optionSexistas.checked);
+
+    // DEBUG PARA SABER SI EL NAVEGADOR ESTA RECONOCIENDO LOS CHECKBOXES ACTIVOS AL CARGAR EL DOM
+    if (optionAltisonantes.checked) {
+        //alert("Altisonantes");
+        console.log("Altisonantes");
+    }
+    if (optionRacistas.checked) {
+        //alert("Racistas");
+        console.log("Racistas");
+    }
+    if (optionSexistas.checked) {
+        //alert("Sexistas");
+        console.log("Sexistas");
+    }
 
     // Verificar el estado al cargar la extensión
     toggleOptions();
 
     // Escuchar cambios en el checkbox activador
-    jqactivador.change(function () {
-        toggleOptions();
-    });
+    activador.addEventListener('change',toggleOptions);
 });
 
 // Nuevo metodo para activar o desactivar los checkboxes options en change de activador
@@ -56,26 +107,7 @@ function recargarPagina() {
     });
 }
 
-// Activacion al cargar la extension para salvar los checkboxes en su uso
-document.addEventListener("DOMContentLoaded", () => {
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
 
-    // Restaurar los valores guardados
-    const savedStates = JSON.parse(localStorage.getItem("checkboxStates")) || {};
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = savedStates[checkbox.id] || false; // Restaurar el estado
-    });
-
-    // Guardar los valores al cambiar
-    checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", () => {
-            const savedStates = JSON.parse(localStorage.getItem("checkboxStates")) || {};
-            savedStates[checkbox.id] = checkbox.checked; // Actualizar el estado
-            localStorage.setItem("checkboxStates", JSON.stringify(savedStates));
-        });
-    });
-    //alert('Cambios salvados');
-});
 
 //Metodo para recargar la pagina con la api de la extension 
 /* chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -115,11 +147,10 @@ botonEliminar.addEventListener("click", () => {
 // Esta función se ejecutará en el contexto de la página web
 function censurarTextoEnPagina() {
     //variables provisonales en lo que se extraen las palabras del .md
-    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
-    const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+    //const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
+    //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const reemplazo = "***";
 
-  
     function censurarNodo(node) {
         if (node.nodeType === Node.TEXT_NODE) {
             let texto = node.nodeValue;
@@ -137,8 +168,8 @@ function censurarTextoEnPagina() {
 
 function borrarTextoEnPagina() {
     //variables provisonales en lo que se extraen las palabras del .md
-    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
-    const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+    //const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
+    //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
     const borrado = "";
 
   
