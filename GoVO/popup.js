@@ -126,7 +126,31 @@ function censurarTextoEnPagina() {
       let texto = node.nodeValue;
       palabrasProhibidas.forEach(() => {
         const regex = new RegExp(
-          "\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b",
+          "\\b(cabr(ón|ona|ones|oncillo)|pendej(o|a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b",
+          "gi"
+        );
+        texto = texto.replace(regex, reemplazo);
+      });
+      node.nodeValue = texto;
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      node.childNodes.forEach(censurarNodo);
+    }
+  }
+  censurarNodo(document.body);
+}
+
+function censurarPrueba() {
+  const palabrasProhibidas = ["nac", "chair", "poch", "frijoler", "pueblerin"]
+  ;
+  // const sufijos = "(o|a|os|as|itos|ito|itas)?";
+  const reemplazo = "***";
+
+  function censurarNodo(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      let texto = node.nodeValue;
+      palabrasProhibidas.forEach(() => {
+        const regex = new RegExp(
+          "\\b(nac(o|a|os|on|as)|chair(o|os|ito|ón)|poch(o|os|ita|ón)|frijoler(o|a|os|as|ón)|pueblerin(o|a|os|as|ón))\\b",
           "gi"
         );
         texto = texto.replace(regex, reemplazo);
