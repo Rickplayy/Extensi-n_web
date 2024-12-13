@@ -170,6 +170,13 @@ botonEliminar.addEventListener("click", () => {
             func: borrarTextoEnPagina_Racista
         });
       }
+      // Llamar a funcion de borrado de palabras sexistas
+      if (optionSexistas.checked) {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: borrarTextoEnPagina_Sexista
+        });
+      }
     });
 });
 
@@ -311,4 +318,26 @@ function borrarTextoEnPagina_Racista() {
       }
   }
   borrarNodo_Racista(document.body);
+}
+
+function borrarTextoEnPagina_Sexista() {
+  //variables provisonales en lo que se extraen las palabras del .md
+  const palabrasProhibidas = [""];
+  //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+  const borrado = "";
+
+
+  function borrarNodo_Sexista(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+          let texto2_Sexista = node.nodeValue;
+          palabrasProhibidas.forEach((palabra2) => {
+              const regex = new RegExp("\\b(verg(a|as|otas|uita)|jot(os|itos|olona|erias)|ram(era|ero|eras|eros)|maric(ón|as|ona|ones|oncillo|onada|mariquita)|huevos|cagón(es|cito)|put(o|a|as|os|itos|otes|eros)|zorr(a|eros|as|os|o)|cog(er|iendo)|tet(as|onas|itas|otas)|chich(is|otas|ón)|mujerzuela(s)?|pito(s)?|pucha(s)?|panoch(a|ón|as)|golfa(s)?|prostitut(a|o|as|os)?|prostibulo|cul(o|os|itos|otes|ón))\\b","gi");
+              texto2_Sexista = texto2_Sexista.replace(regex, borrado);
+          });
+          node.nodeValue = texto2_Sexista;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+          node.childNodes.forEach(borrarNodo_Sexista);
+      }
+  }
+  borrarNodo_Sexista(document.body);
 }
