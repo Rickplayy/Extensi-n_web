@@ -124,12 +124,26 @@ function recargarPagina() {
 
 //Listener del botonCensura
 botonCensura.addEventListener("click", () => {
+  console.log("Aplicando filtros de: ", (optionAltisonantes.checked)?'Altisonantes':'?', (optionRacistas.checked)?', Racistas':', ?', (optionSexistas.checked)?'y Sexistas':'y ?');
+    // Llama a las funciones de censura en la página actual
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      // Llamar a funcion de censura de palabras altisonantes
+      if (optionAltisonantes.checked) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
-            func: censurarTextoEnPagina
-            // Llama a la función en la página actual
+            func: censurarTextoEnPagina_Altisonante
+            
         });
+      }
+
+      if (optionRacistas.checked) {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: censurarTextoEnPagina_Racista
+            
+        });
+      }
+
     });    
 });
 
@@ -143,12 +157,13 @@ botonEliminar.addEventListener("click", () => {
         });
     });
 });
+
   
 // Esta función se ejecutará en el contexto de la página web
-function censurarTextoEnPagina() {
+function censurarTextoEnPagina_Altisonante() {
     //variables provisonales en lo que se extraen las palabras del .md
-    const palabrasProhibidas = ["put", "pendej", "culer", "puñeter", "ramer","jodeput", "pelotud","verg"];
-    const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+    const palabrasProhibidas = [""];
+    //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
 
     /*
     const regex2 = new RegExp(
@@ -159,7 +174,8 @@ function censurarTextoEnPagina() {
 
     const reemplazo = "***";
 
-    function censurarNodo(node) {
+    function censurarNodo_Altisonante(node) {
+
         if (node.nodeType === Node.TEXT_NODE) {
             let textoAltisonantes = node.nodeValue;
             palabrasProhibidas.forEach((palabra) => {
@@ -168,10 +184,41 @@ function censurarTextoEnPagina() {
             });
             node.nodeValue = textoAltisonantes;
         } else if (node.nodeType === Node.ELEMENT_NODE) {
-            node.childNodes.forEach(censurarNodo);
+            node.childNodes.forEach(censurarNodo_Altisonante);
         }
     }
-    censurarNodo(document.body);
+    censurarNodo_Altisonante(document.body);
+}
+
+function censurarTextoEnPagina_Racista() {
+  //variables provisonales en lo que se extraen las palabras del .md
+  const palabrasProhibidas = [""];
+  //const sufijos = "(o|a|os|as|itos|ito|itas)?"; 
+
+  /*
+  const regex2 = new RegExp(
+      "\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b",
+      "gi"
+    );
+  */
+
+  const reemplazo = "***";
+
+  function censurarNodo_Racista(node) {
+
+      if (node.nodeType === Node.TEXT_NODE) {
+          let textoRacista = node.nodeValue;
+          palabrasProhibidas.forEach((palabra) => {
+              //const regex = new RegExp("\\b(cabr(ón|ona|ones|oncillo)|pendej(a|os|ear|itos|as|etes|eo|ita|adas)|mierd(a|itas|ero|ón|eros|as)|coñ(o|os|azo|azos)|chinga(da|ndo|r|das|dera)|cul(eros|eras|culerito|ear|ero|era)|desgraciad(o|a|os|as)|mam(ona|oncillos|ones|onas)|hijueput(as|ón)|malparid(os|a|as)|idiot(a|as|ita|ez)|pinch(es|e)|puñet(ero|a|eros|eras)|ojet(es|e)|perr(a|as)|mamahuevo(s)?)\\b","gi");
+              const regex = new RegExp("\\b(nac(o|a|os|on|as)|chair(o|os|ito|ón)|poch(o|os|ita|ón)|frijol(e|a|os|as|ón)|puebler(o|a|os|as|ón))\\b","gi");
+              textoRacista = textoRacista.replace(regex, reemplazo);
+          });
+          node.nodeValue = textoRacista;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+          node.childNodes.forEach(censurarNodo_Racista);
+      }
+  }
+  censurarNodo_Racista(document.body);
 }
 
 function borrarTextoEnPagina() {
