@@ -2,7 +2,7 @@
     "manifest_version" : 3,
     "name" : "GoVO",
     "version": "1.0",
-    "description": "Good Vibes Only",
+    "description": "Good Vibes Only(GoVO): Extension que censura texto ofensivo dentro de una pagina web a tiempo real, para cuidar a los menores de las malas palabras",
     "permissions": ["scripting", "activeTab", "tabs"],
     "icons": {
         "128" : "gato2.png"
