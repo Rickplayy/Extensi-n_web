@@ -1,7 +1,7 @@
 {
     "manifest_version" : 3,
     "name" : "GoVO",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Extension que censura texto ofensivo dentro de una pagina web a tiempo real, para cuidar a los menores de las malas palabras",
     "permissions": ["scripting"],
     "host_permissions":["<all_urls>"],
