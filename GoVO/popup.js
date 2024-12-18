@@ -44,6 +44,7 @@ const optionSexistas = document.getElementById("sexistas");
     const optionRacistas = document.getElementById("racistas");
     const optionSexistas = document.getElementById("sexistas");
     const options = document.querySelectorAll('#altisonantes, #racistas, #sexistas, #btn-Censura, #btn-Eliminada, #rd-baja, #rd-media, #rd-alta');
+    
      // Función para habilitar o deshabilitar las opciones
      const toggleOptions = () => {
         options.forEach(opcion => {
@@ -102,6 +103,7 @@ function recargarPagina() {
     // Obtén la pestaña activa y recárgala
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         if (tabs.length > 0) {
+            console.log("Recarga");
             chrome.tabs.reload(tabs[0].id);
         }
     });
