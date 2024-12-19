@@ -3,8 +3,7 @@
     "name" : "GoVO",
     "version": "1.0.2",
     "description": "Extension que censura texto ofensivo dentro de una pagina web a tiempo real, para cuidar a los menores de las malas palabras",
-    "permissions": ["scripting"],
-    "host_permissions":["<all_urls>"],
+    "permissions": ["scripting", "activeTab"],
     "icons": {
         "128" : "GoVOLogo3.png"
     },
